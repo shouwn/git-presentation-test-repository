@@ -79,6 +79,8 @@ class Fraction:
         """
         # 새로 들어온 분자를 현재 분모와 약분하여 현재 객체(self)의 분자와 분모에 배정
         # TODO impl
+        self.numerator, self.denominator = reduce(numerator, self.denominator)
+        print("롸롸 from subin")
 
     def get_denominator(self):
         """
