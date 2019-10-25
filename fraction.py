@@ -68,7 +68,7 @@ class Fraction:
         분자의 getter
         :return: 분자
         """
-        # TODO impl
+        return self.numerator
 
     def set_numerator(self, numerator):
         """
@@ -77,14 +77,14 @@ class Fraction:
         :return: None
         """
         # 새로 들어온 분자를 현재 분모와 약분하여 현재 객체(self)의 분자와 분모에 배정
-        # TODO impl
+        self.numerator, self.denominator = reduce(numerator, self.denominator)
 
     def get_denominator(self):
         """
         분모의 getter
         :return: 분모
         """
-        # TODO impl
+        return self.denominator
 
     def set_denominator(self, denominator):
         """
@@ -92,14 +92,17 @@ class Fraction:
         :param denominator: 수정할 분모 값
         :return: None
         """
-        # TODO impl
+        # 분자와 분모를 정제
+        numerator, denominator = refine(self.numerator, denominator)
+        # 새로 들어온 분모를 현재 분자와 약분하여 현재 객체(self)의 분자와 분모에 배정
+        self.numerator, self.denominator = reduce(numerator, denominator)
 
     def __str__(self):
         """
         객체를 문자열로 만드는 메소드
         :return: 분자/분모 형식의 문자열
         """
-        # TODO impl
+        return str(self.numerator) + "/" + str(self.denominator)
 
     def __add__(self, other):
         """
@@ -107,7 +110,9 @@ class Fraction:
         :param other: 현재 객체에 더할 다른 객체
         :return: 두 객체를 더한 값을 가지는 새로운 객체
         """
-        # TODO impl
+        numerator = (self.numerator * other.denominator + other.numerator * self.denominator)
+        denominator = self.denominator * other.denominator
+        return Fraction(numerator, denominator)
 
     def __mul__(self, other):
         """
@@ -115,7 +120,9 @@ class Fraction:
         :param other: 현재 객체에 곱할 다른 객체
         :return: 두 객체를 곱한 값을 가지는 새로운 객체
         """
-        # TODO impl
+        numerator = self.numerator * other.numerator
+        denominator = self.denominator * other.denominator
+        return Fraction(numerator, denominator)
 
     def __sub__(self, other):
         """
@@ -123,7 +130,9 @@ class Fraction:
         :param other: 현재 객체에 뺄 다른 객체
         :return: 두 객체를 뺀 값을 가지는 새로운 객체
         """
-        # TODO impl
+        numerator = (self.numerator * other.denominator - other.numerator * self.denominator)
+        denominator = self.denominator * other.denominator
+        return Fraction(numerator, denominator)
 
     def __truediv__(self, other):
         """
@@ -131,7 +140,9 @@ class Fraction:
         :param other: 현재 객체에 나눌 다른 객체
         :return: 두 객체를 나눈 값을 가지는 새로운 객체
         """
-        # TODO impl
+        numerator = self.numerator * other.denominator
+        denominator = self.denominator * other.numerator
+        return Fraction(numerator, denominator)
 
     def __eq__(self, other):
         """
@@ -139,7 +150,7 @@ class Fraction:
         :param other: 현재 객체와 같은지 비교할 다른 객체
         :return: 두 객체가 같은가? True or False
         """
-        # TODO impl
+        return self.numerator == other.numerator and self.denominator == other.denominator
 
     def __ne__(self, other):
         """
@@ -147,7 +158,7 @@ class Fraction:
         :param other: 현재 객체와 다른지 비교할 다른 객체
         :return: 두 객체가 다른가? True or False
         """
-        # TODO impl
+        return self.numerator != other.numerator or self.denominator != other.denominator
 
     def __lt__(self, other):
         """
@@ -155,7 +166,7 @@ class Fraction:
         :param other: 현재 객체가 작은지 비교할 다른 객체
         :return: 현재 객체가 다른 객체보다 작은가? True or False
         """
-        # TODO impl
+        return (self - other).numerator < 0
 
     def __le__(self, other):
         """
@@ -163,7 +174,7 @@ class Fraction:
         :param other: 현재 객체가 작거나 같은지 비교할 다른 객체
         :return: 현재 객체가 다른 객체보다 작거나 같은가? True or False
         """
-        # TODO impl
+        return self < other or self == other
 
     def __gt__(self, other):
         """
@@ -171,7 +182,7 @@ class Fraction:
         :param other: 현재 객체가 큰지 비교할 다른 객체
         :return: 현재 객체가 다른 객체보다 큰가? True or False
         """
-        # TODO impl
+        return (self - other).numerator > 0
 
     def __ge__(self, other):
         """
@@ -179,4 +190,4 @@ class Fraction:
         :param other: 현재 객체가 크거나 같은지 비교할 다른 객체
         :return: 현재 객체가 다른 객체보다 크거나 같은가? True or False
         """
-        # TODO impl
+        return self > other or self == other
