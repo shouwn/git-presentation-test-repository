@@ -117,6 +117,10 @@ class Fraction:
         :return: 두 객체를 곱한 값을 가지는 새로운 객체
         """
         # TODO impl
+        numerator = self.numerator * other.numerator
+        denominator = self.denominator * other.denominator
+        return Fraction(numerator, denominator)
+        
 
     def __sub__(self, other):
         """
