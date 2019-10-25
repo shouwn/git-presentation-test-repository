@@ -152,6 +152,8 @@ class Fraction:
         :param other: 현재 객체와 다른지 비교할 다른 객체
         :return: 두 객체가 다른가? True or False
         """
+        return self.numerator != other.numerator or self.denominator != other.denominator
+        
         # TODO impl
 
     def __lt__(self, other):
