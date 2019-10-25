@@ -124,6 +124,9 @@ class Fraction:
         :return: 두 객체를 뺀 값을 가지는 새로운 객체
         """
         # TODO impl
+        numerator = (self.numerator * other.denominator - other.numerator * self.denominator)
+        denominator = self.denominator * other.denominator
+        return Fraction(numerator, denominator)
 
     def __truediv__(self, other):
         """
