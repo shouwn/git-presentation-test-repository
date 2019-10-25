@@ -69,6 +69,7 @@ class Fraction:
         :return: 분자
         """
         # TODO impl
+        return self.numerator
 
     def set_numerator(self, numerator):
         """
