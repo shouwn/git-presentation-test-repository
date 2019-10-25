@@ -119,6 +119,7 @@ class Fraction:
         numerator = self.numerator * other.numerator
         denominator = self.denominator * other.denominator
         return Fraction(numerator, denominator)
+        
 
     def __sub__(self, other):
         """
