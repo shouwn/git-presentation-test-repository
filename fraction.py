@@ -107,7 +107,9 @@ class Fraction:
         :param other: 현재 객체에 더할 다른 객체
         :return: 두 객체를 더한 값을 가지는 새로운 객체
         """
-        # TODO impl
+        numerator = (self.numerator * other.denominator + other.numerator * self.denominator)
+        denominator = self.denominator * other.denominator
+        return Fraction(numerator, denominator)
 
     def __mul__(self, other):
         """
