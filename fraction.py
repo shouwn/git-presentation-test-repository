@@ -140,6 +140,7 @@ class Fraction:
         :return: 두 객체가 같은가? True or False
         """
         # TODO impl
+        return self.numerator == other.numerator and self.denominator == other.denominator
 
     def __ne__(self, other):
         """
