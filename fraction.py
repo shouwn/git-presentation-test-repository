@@ -100,7 +100,7 @@ class Fraction:
         객체를 문자열로 만드는 메소드
         :return: 분자/분모 형식의 문자열
         """
-        # TODO impl
+        return str(self.numerator) + "/" + str(self.denominator)
 
     def __add__(self, other):
         """
